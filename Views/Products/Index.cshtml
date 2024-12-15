@@ -1,0 +1,17 @@
+﻿@model IEnumerable<OnlineStoreZaliczenie.Models.Product>
+
+<h1>Produkty</h1>
+
+@if (Model == null || !Model.Any())
+{
+    <p>Brak produktów do wyświetlenia.</p>
+}
+else
+{
+    <ul>
+        @foreach (var product in Model)
+        {
+            <li>@product.Name - @product.Price zł</li>
+        }
+    </ul>
+}
