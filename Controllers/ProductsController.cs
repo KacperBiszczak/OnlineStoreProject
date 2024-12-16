@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OnlineStoreZaliczenie.Data;
 
 namespace OnlineStoreZaliczenie.Controllers
@@ -17,7 +18,7 @@ namespace OnlineStoreZaliczenie.Controllers
         public IActionResult Index()
         {
             // Pobierz produkty synchronnie
-            var products = _context.Products.ToList();
+            var products = _context.Products.Include(P => P.Category).ToList();
 
             // Przekazanie danych do widoku
             return View(products);
@@ -26,7 +27,8 @@ namespace OnlineStoreZaliczenie.Controllers
         // GET: ProductsController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var product =  _context.Products.Include(P => P.Category).FirstOrDefault(p => p.ProductId == id);
+            return View(product);
         }
 
         // GET: ProductsController/Create
