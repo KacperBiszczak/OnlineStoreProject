@@ -36,15 +36,7 @@ namespace OnlineStoreZaliczenie.Controllers
 
         // GET: ProductsController/Create
         public ActionResult Create()
-        {
-
-
-            //var product = new Product();
-            //product.Name = 
-
-            //_context.Products.Add(product);
-            //_context.SaveChanges();
-            
+        {            
             var categories = _context.Categories.ToList();
             ViewBag.CategoryId = new SelectList(categories, "CategoryId", "Name");
 
@@ -92,8 +84,6 @@ namespace OnlineStoreZaliczenie.Controllers
         {
             try
             {
-                //var priceString = product.Price.ToString().Replace('.', ',');
-                //product.Price = decimal.Parse(priceString);
                 _context.Products.Update(product);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
@@ -109,21 +99,25 @@ namespace OnlineStoreZaliczenie.Controllers
         // GET: ProductsController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var product = _context.Products.Include(P => P.Category).FirstOrDefault(p => p.ProductId == id);
+            return View(product);
         }
 
         // POST: ProductsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, [Bind("ProductId, Name, Description, Price, CategoryId")]
+        Product product)
         {
             try
             {
+                _context.Products.Remove(product);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(product);
             }
         }
     }
