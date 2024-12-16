@@ -6,9 +6,13 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -45,7 +49,8 @@
             <td>
                     @if (User.IsInRole("Admin"))
                     {
-                        <a asp-action="Edit" asp-route-id="@item.ProductId"> Edit </a> 
+                        <a asp-action="Edit" asp-route-id="@item.ProductId"> Edit </a>
+                        <span>|</span>
                     }
 
                     
@@ -56,6 +61,7 @@
 
                     @if (User.IsInRole("Admin"))
                     {
+                        <span>|</span>
                         <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
                     }
             </td>
