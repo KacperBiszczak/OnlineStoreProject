@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OnlineStoreZaliczenie.Data;
+using OnlineStoreZaliczenie.Models;
 
 namespace OnlineStoreZaliczenie.Controllers
 {
@@ -34,21 +36,35 @@ namespace OnlineStoreZaliczenie.Controllers
         // GET: ProductsController/Create
         public ActionResult Create()
         {
+            //var product = new Product();
+            //product.Name = 
+
+            //_context.Products.Add(product);
+            //_context.SaveChanges();
+            
+            var categories = _context.Categories.ToList();
+            ViewBag.CategoryId = new SelectList(categories, "CategoryId", "Name");
+
             return View();
         }
 
         // POST: ProductsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create([Bind("ProductId, Name, Description, Price, CategoryId")] 
+        Product product)
         {
             try
             {
+                _context.Products.Add(product);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                var categories = _context.Categories.ToList();
+                ViewBag.CategoryId = new SelectList(categories, "CategoryId", "Name");
+                return View(product);
             }
         }
 
