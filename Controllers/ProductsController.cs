@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +47,7 @@ namespace OnlineStoreZaliczenie.Controllers
         // POST: ProductsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind("ProductId, Name, Description, Price, CategoryId")] 
         Product product)
         {
@@ -67,6 +69,7 @@ namespace OnlineStoreZaliczenie.Controllers
         }
 
         // GET: ProductsController/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var product = _context.Products.Include(P => P.Category).FirstOrDefault(p => p.ProductId == id);
@@ -79,6 +82,7 @@ namespace OnlineStoreZaliczenie.Controllers
         // POST: ProductsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id, [Bind("ProductId, Name, Description, Price, CategoryId")]
         Product product)
         {
@@ -97,6 +101,7 @@ namespace OnlineStoreZaliczenie.Controllers
         }
 
         // GET: ProductsController/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var product = _context.Products.Include(P => P.Category).FirstOrDefault(p => p.ProductId == id);
@@ -106,6 +111,7 @@ namespace OnlineStoreZaliczenie.Controllers
         // POST: ProductsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id, [Bind("ProductId, Name, Description, Price, CategoryId")]
         Product product)
         {
