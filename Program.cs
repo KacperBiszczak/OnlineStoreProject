@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using OnlineStoreZaliczenie.Models;
 using OnlineStoreZaliczenie.Data;
 using OnlineStoreZaliczenie.Helpers;
+using System.Globalization;
 
 namespace OnlineStoreZaliczenie
 {
@@ -11,6 +12,9 @@ namespace OnlineStoreZaliczenie
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
