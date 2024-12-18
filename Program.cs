@@ -4,6 +4,8 @@ using OnlineStoreZaliczenie.Models;
 using OnlineStoreZaliczenie.Data;
 using OnlineStoreZaliczenie.Helpers;
 using System.Globalization;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using OnlineStoreZaliczenie.Services;
 
 namespace OnlineStoreZaliczenie
 {
@@ -13,6 +15,7 @@ namespace OnlineStoreZaliczenie
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // Set culture to valid format of forms
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
@@ -27,6 +30,11 @@ namespace OnlineStoreZaliczenie
             {
                 options.SignIn.RequireConfirmedAccount = false;
             });
+
+            builder.Services.AddRazorPages();
+
+            // Sending mails 
+            builder.Services.AddSingleton<IEmailSender, EmailSender>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -50,10 +58,10 @@ namespace OnlineStoreZaliczenie
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
 
             app.UseAuthorization();
+            app.MapRazorPages();
 
             app.MapControllerRoute(
                 name: "default",
