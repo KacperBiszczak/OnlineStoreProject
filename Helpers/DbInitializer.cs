@@ -11,7 +11,7 @@ namespace OnlineStoreZaliczenie.Helpers
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-            // Dodaj role
+            // Add roles
             string[] roles = { "Admin", "User" };
             foreach (var role in roles)
             {
@@ -21,7 +21,7 @@ namespace OnlineStoreZaliczenie.Helpers
                 }
             }
 
-            // Dodaj konto admina
+            // Add admin account
             var adminEmail = "admin@example.com";
             var adminPassword = "Admin123!";
             if (userManager.FindByEmailAsync(adminEmail).Result == null)
