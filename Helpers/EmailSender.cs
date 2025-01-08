@@ -7,8 +7,6 @@ namespace OnlineStoreZaliczenie.Services
     {
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            // Nie wysyłamy e-maili, po prostu logujemy do konsoli (opcjonalnie)
-            Console.WriteLine($"Fake email sent to {email} with subject {subject}");
             return Task.CompletedTask;
         }
     }

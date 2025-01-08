@@ -21,10 +21,11 @@ namespace OnlineStoreZaliczenie.Controllers
         // GET: ProductsController
         public IActionResult Index()
         {
-            // Pobierz produkty synchronnie
+            bool hasProducts = _context.Products.Any();
+            ViewData["HasProducts"] = hasProducts;
+
             var products = _context.Products.Include(P => P.Category).ToList();
 
-            // Przekazanie danych do widoku
             return View(products);
         }
 
@@ -66,6 +67,26 @@ namespace OnlineStoreZaliczenie.Controllers
                 ViewBag.CategoryId = new SelectList(categories, "CategoryId", "Name");
                 return View(product);
             }
+        }
+
+        [HttpGet]
+        public IActionResult CreateCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateCategory([Bind("CategoryId, Name, Description")]
+        Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Categories.Add(category);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(category);
         }
 
         // GET: ProductsController/Edit/5
