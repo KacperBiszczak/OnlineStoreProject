@@ -8,9 +8,6 @@ Online Store to aplikacja webowa zaprojektowana w technologii ASP.NET Core 8.
 - Przeglądanie listy dostępnych produktów.
 - Podgląd szczegółowych informacji o wybranym produkcie.
 
-### Dla użytkowników zalogowanych
-- Dostęp do wszystkich funkcji dostępnych dla niezalogowanych użytkowników.
-
 ### Dla administratorów
 - Rozbudowane narzędzia do zarządzania asortymentem:
   - Dodawanie nowych produktów.
@@ -54,32 +51,27 @@ Online Store to aplikacja webowa zaprojektowana w technologii ASP.NET Core 8.
 
 3. **Zainicjuj bazę danych**:
 
-   Wykonaj poniższe polecenia w terminalu:
+   Wykonaj poniższe polecenia w menedżerze pakietów:
 
    ```bash
-   dotnet ef migrations add InitialMigration
-   dotnet ef database update
+   ADD-MIGRATION "Initial"
+   UPDATE-DATABASE
    ```
 
 4. **Uruchom aplikację**:
 
-   W Visual Studio wybierz "Run" lub wpisz w terminalu:
-
-   ```bash
-   dotnet run
-   ```
+   W Visual Studio wybierz "Run".
 
 ## Korzystanie z aplikacji
 
 ### Role użytkowników
 
 - **Administrator**:
-  - Login: `admin@example.com`
-  - Hasło: `Admin123!`
+  - Login: `admin@gmail.com`
+  - Hasło: `zaq1@WSX`
 
 - **Zwykły użytkownik**: W celu uzyskania dostępu, załóż nowe konto poprzez formularz rejestracji.
 
 ### Dostępne funkcje
 
 - Administratorzy mają pełny dostęp do narzędzi zarządzania, w tym dodawania, edytowania i usuwania produktów oraz konfiguracji kategorii.
-- Zarejestrowani użytkownicy mogą przeglądać ofertę sklepu.
