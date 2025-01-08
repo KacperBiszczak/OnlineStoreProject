@@ -15,13 +15,6 @@ Online Store to aplikacja webowa zaprojektowana w technologii ASP.NET Core 8.
   - Usuwanie produktów z bazy.
   - Organizowanie produktów w kategorie.
 
-## Technologie
-
-- **Backend**: ASP.NET Core 8
-- **Frontend**: Razor Pages, Bootstrap 5
-- **Baza danych**: Microsoft SQL Server z obsługą przez Entity Framework Core
-- **System uwierzytelniania**: ASP.NET Core Identity
-
 ## Jak uruchomić projekt
 
 ### Wymagania wstępne
