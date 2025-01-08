@@ -1,49 +1,40 @@
 # Online Store
 
-Online Store to aplikacja webowa stworzona przy użyciu ASP.NET Core 8, która umożliwia zarządzanie sklepem internetowym. Aplikacja posiada funkcjonalności takie jak rejestracja użytkowników, logowanie, role administracyjne oraz możliwość przeglądania, dodawania, edytowania i usuwania produktów.
+Online Store to aplikacja webowa zaprojektowana w technologii ASP.NET Core 8.
+
 ## Funkcjonalności
 
-### Użytkownik niezalogowany
-- Możliwość przeglądania listy produktów.
-- Szczegóły produktu (widok "Details").
+### Dla użytkowników niezalogowanych i zalogowanych
+- Przeglądanie listy dostępnych produktów.
+- Podgląd szczegółowych informacji o wybranym produkcie.
 
-### Zarejestrowany użytkownik
-- Możliwość przeglądania produktów i ich szczegółów.
+### Dla administratorów
+- Rozbudowane narzędzia do zarządzania asortymentem:
+  - Dodawanie nowych produktów.
+  - Modyfikowanie istniejących produktów.
+  - Usuwanie produktów z bazy.
+  - Organizowanie produktów w kategorie.
 
-### Administrator
-- Pełny dostęp do zarządzania produktami:
-  - Dodawanie produktów.
-  - Edytowanie produktów.
-  - Usuwanie produktów.
-  - Zarządzanie kategoriami produktów.
-
-## Technologie
-
-- **Backend**: ASP.NET Core 8
-- **Frontend**: Razor Pages, Bootstrap
-- **Baza danych**: Microsoft SQL Server z wykorzystaniem Entity Framework Core
-- **Autoryzacja i uwierzytelnianie**: ASP.NET Core Identity
-
-## Instalacja
+## Jak uruchomić projekt
 
 ### Wymagania wstępne
 
-- .NET SDK 8
-- Microsoft SQL Server
-- Visual Studio 2022 (lub inny edytor obsługujący .NET)
+- Zainstalowany .NET SDK 8
+- Dostęp do Microsoft SQL Server
+- Visual Studio 2022 lub inny kompatybilny edytor
 
-### Kroki instalacji
+### Instrukcja instalacji
 
-1. **Klonowanie repozytorium**:
+1. **Pobierz projekt**:
 
    ```bash
    git clone https://github.com/yourusername/OnlineStoreZaliczenie.git
    cd OnlineStoreZaliczenie
    ```
 
-2. **Konfiguracja bazy danych**:
+2. **Skonfiguruj bazę danych**:
 
-   Otwórz plik `appsettings.json` i ustaw parametry połączenia z bazą danych w sekcji `ConnectionStrings`:
+   Edytuj plik `appsettings.json` i wprowadź dane połączenia do bazy w sekcji `ConnectionStrings`:
 
    ```json
    "ConnectionStrings": {
@@ -51,38 +42,29 @@ Online Store to aplikacja webowa stworzona przy użyciu ASP.NET Core 8, która u
    }
    ```
 
-3. **Migracje bazy danych**:
+3. **Zainicjuj bazę danych**:
 
-   W terminalu wykonaj polecenia:
+   Wykonaj poniższe polecenia w menedżerze pakietów:
 
    ```bash
    ADD-MIGRATION "Initial"
    UPDATE-DATABASE
    ```
 
-## Użytkowanie
+4. **Uruchom aplikację**:
+
+   W Visual Studio wybierz "Run".
+
+## Korzystanie z aplikacji
 
 ### Role użytkowników
 
 - **Administrator**:
-  - E-mail: `admin@example.com`
-  - Hasło: `Admin123!`
+  - Login: `admin@gmail.com`
+  - Hasło: `zaq1@WSX`
 
-- **Zwykły użytkownik**: Zarejestruj się, aby korzystać z aplikacji.
+- **Zwykły użytkownik**: W celu uzyskania dostępu, załóż nowe konto poprzez formularz rejestracji.
 
-### Funkcjonalności
-- Administrator może zarządzać produktami, kategoriami i użytkownikami.
-- Użytkownicy mają możliwość przeglądania produktów i oglądania ich szczegółów.
+### Dostępne funkcje
 
-## Struktura projektu
-
-- **Controllers**: Zawiera kontrolery MVC obsługujące żądania.
-- **Models**: Definicje klas modelu, w tym encje dla Entity Framework.
-- **Views**: Widoki Razor Pages dla aplikacji.
-- **Data**: Kontekst bazy danych i konfiguracje EF Core.
-- **Helpers**: Implementacja initializacji bazy danych.
-
-## Funkcje dodatkowe
-
-- Walidacja danych po stronie klienta i serwera.
-
+- Administratorzy mają pełny dostęp do narzędzi zarządzania, w tym dodawania, edytowania i usuwania produktów oraz konfiguracji kategorii.
