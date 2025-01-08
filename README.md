@@ -32,7 +32,16 @@ Online Store to aplikacja webowa zaprojektowana w technologii ASP.NET Core 8.
    cd OnlineStoreZaliczenie
    ```
 
-2. **Skonfiguruj bazę danych**:
+2. **Pobierz potrzebne biblioteki**:
+
+   Wejdź w zarządzanie pakietami NuGet i tam dodaj nastepujące biblioteki:
+   - Microsoft.AspNetCore.Identity.EntityFrameworkCore
+   - Microsoft.AspNetCore.Identity.UI
+   - Microsoft.EntityFrameworkCore.SqlServer
+   - Microsoft.EntityFrameworkCore.Tools
+
+
+3. **Skonfiguruj bazę danych**:
 
    Edytuj plik `appsettings.json` i wprowadź dane połączenia do bazy w sekcji `ConnectionStrings`:
 
@@ -42,7 +51,7 @@ Online Store to aplikacja webowa zaprojektowana w technologii ASP.NET Core 8.
    }
    ```
 
-3. **Zainicjuj bazę danych**:
+4. **Zainicjuj bazę danych**:
 
    Wykonaj poniższe polecenia w menedżerze pakietów:
 
@@ -51,7 +60,7 @@ Online Store to aplikacja webowa zaprojektowana w technologii ASP.NET Core 8.
    UPDATE-DATABASE
    ```
 
-4. **Uruchom aplikację**:
+5. **Uruchom aplikację**:
 
    W Visual Studio wybierz "Run".
 
