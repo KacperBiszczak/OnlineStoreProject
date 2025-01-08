@@ -22,8 +22,8 @@ namespace OnlineStoreZaliczenie.Helpers
             }
 
             // Add admin account
-            var adminEmail = "admin@example.com";
-            var adminPassword = "Admin123!";
+            var adminEmail = "admin@gmail.com";
+            var adminPassword = "zaq1@WSX";
             if (userManager.FindByEmailAsync(adminEmail).Result == null)
             {
                 var adminUser = new ApplicationUser { UserName = adminEmail, Email = adminEmail, FirstName = "Admin", LastName = "Admin" };
